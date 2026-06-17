@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Power Monitoring — 36 Benefits · stratcon.ph</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="36 benefits of smart power monitoring with Smappee Infinity, presented for Stratcon.ph — built for the Philippine market.">
+<meta property="og:title" content="Smart Power Monitoring — 36 Benefits · Stratcon.ph">
+<meta property="og:description" content="The 36 benefits that make Smart Power Monitoring ROI inevitable. Hover any ray to explore.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Nunito:wght@300;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ============= Stratcon brand tokens ============= */
+  :root {
+    /* canvas */
+    --bg-0:        #04101e;
+    --bg-1:        #0a1f44;
+    --bg-2:        #102b58;
+
+    /* ink */
+    --ink:         #ffffff;
+    --ink-soft:    #d6dde8;
+    --ink-mute:    #8898ad;
+    --ink-dim:     #5a6a82;
+
+    /* Stratcon palette (from brand swatches) */
+    --leaf-lime:   #8ac53f;
+    --leaf-lime-hi:#b8e07a;
+    --leaf-deep:   #0b8543;
+    --teal:        #149dc1;
+    --teal-hi:     #4cc4e0;
+    --teal-deep:   #0a6f8e;
+
+    /* Claude-PPT navy */
+    --navy:        #1a3a72;
+    --navy-deep:   #0a1f44;
+
+    /* warm — used minimally for "future" tag accent only */
+    --warm-soft:   #ffd9a8;
+
+    /* type — Manrope (Webflow-friendly) with system fallbacks */
+    --font: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    width: 100%;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(20,157,193,.10) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 30% 70%, rgba(138,197,63,.05) 0%, transparent 65%),
+      radial-gradient(ellipse at center, var(--bg-2) 0%, var(--bg-1) 50%, var(--bg-0) 100%);
+    color: var(--ink-soft);
+    font-family: var(--font);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ============= Top bar — logo only, top-right ============= */
+  .site-header {
+    position: absolute;
+    top: 28px; right: 40px;
+    z-index: 10;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .site-header .logo {
+    display: block;
+    height: 56px; width: auto;
+    filter: drop-shadow(0 0 12px rgba(20,157,193,.30));
+    transition: filter .25s ease;
+  }
+  .site-header .logo:hover {
+    filter: drop-shadow(0 0 18px rgba(138,197,63,.45));
+  }
+
+  /* ============= Slide layout ============= */
+  .slide {
+    width: 100%; min-height: 100vh;
+    display: grid;
+    /* asymmetric padding: small left so the text hugs the leaf-rule near the
+       edge, generous right so the wheel + top-right logo have room */
+    grid-template-columns: minmax(360px, 480px) 1fr;
+    gap: 40px;
+    padding: 36px 56px 28px 28px;   /* top  right  bottom  left */
+    align-items: stretch;
+  }
+
+  /* ============= Info column (left) ============= */
+  .info-col {
+    display: flex; flex-direction: column;
+    min-height: 0;
+    position: relative;
+    padding-left: 18px;       /* tightened so the text sits closer to the rule */
+  }
+  .info-col::before {
+    content: ""; position: absolute;
+    left: 0; top: 6px; bottom: 6px; width: 2px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      var(--teal) 20%,
+      var(--leaf-deep) 50%,
+      var(--leaf-lime) 80%,
+      transparent 100%);
+    opacity: .55; border-radius: 2px;
+  }
+
+  .title {
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 200;
+    letter-spacing: 2px;
+    color: var(--ink);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin: 0 0 10px;
+  }
+  .title strong { color: var(--leaf-lime); font-weight: 600; }
+
+  /* "with smappee" — second line under the main title.
+     Nunito approximates Smappee's rounded brand wordmark. */
+  .title-aux {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Nunito', 'Manrope', sans-serif;
+    font-size: clamp(15px, 1.6vw, 20px);
+    font-weight: 300;
+    text-transform: lowercase;
+    letter-spacing: .2px;
+    color: var(--ink-mute);
+    line-height: 1;
+  }
+  .title-aux .smappee-mark {
+    font-family: 'Nunito', 'Manrope', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -.4px;
+    color: var(--ink);
+    margin-left: 4px;
+    /* the dot above the 'i' of 'smappee' is replaced by a leaf-tinted accent
+       at the start of the word for a subtle brand cue */
+    background:
+      radial-gradient(circle at 22% 28%, var(--leaf-lime) 0 1.5px, transparent 1.6px);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .tagline {
+    font-size: 12.5px;
+    letter-spacing: 2.5px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+  }
+  .tagline em { color: var(--teal-hi); font-style: normal; font-weight: 700; }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    opacity: .3;
+    margin: 22px 0;
+    border: 0;
+  }
+
+  /* benefit-block: GRID-STACKED so idle/live blocks share the same cell.
+     The cell sizes to whichever is taller — preventing the previous overflow. */
+  .benefit-block {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-areas: "stack";
+    align-items: center;
+    min-height: 280px;
+  }
+  .idle-block, .live-block {
+    grid-area: stack;
+    display: flex; flex-direction: column; justify-content: center;
+    transition: opacity .35s ease, transform .35s ease, visibility .35s;
+  }
+  .live-block { opacity: 0; visibility: hidden; transform: translateY(8px); pointer-events: none; }
+  .info-col.active .idle-block { opacity: 0; visibility: hidden; transform: translateY(-8px); }
+  .info-col.active .live-block { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+
+  /* idle copy */
+  .idle-headline {
+    font-size: clamp(22px, 2vw, 26px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: .2px;
+    margin: 0 0 16px;
+  }
+  .idle-headline strong { color: var(--leaf-lime); font-weight: 600; }
+  .idle-body {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin: 0;
+  }
+  .idle-body + .idle-body { margin-top: 14px; }
+  .idle-body em.lime { color: var(--leaf-lime-hi); font-style: normal; font-weight: 500; }
+  .idle-body em.teal { color: var(--teal-hi);      font-style: normal; font-weight: 500; }
+  .idle-body sup { font-size: 11px; color: var(--leaf-lime); margin-left: 1px; font-weight: 700; }
+
+  /* live (hover) content */
+  .ben-num {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--leaf-lime);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .ben-name {
+    font-size: clamp(24px, 2.4vw, 30px);
+    font-weight: 600;
+    letter-spacing: .2px;
+    color: var(--ink);
+    line-height: 1.15;
+    text-shadow: 0 0 22px rgba(20,157,193,.45);
+    margin: 0 0 16px;
+  }
+  .ben-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 300;
+    margin: 0 0 14px;
+  }
+  /* partner mention — gentle lime underline that lights up on hover */
+  .ben-desc .partner-link {
+    color: var(--leaf-lime-hi);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138,197,63,.45);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .ben-desc .partner-link:hover,
+  .ben-desc .partner-link:focus {
+    color: var(--ink);
+    border-bottom-color: var(--leaf-lime);
+  }
+
+  /* result-tag pills */
+  .ben-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .ben-tag[hidden] { display: none; }
+  .ben-tag.savings {
+    background: rgba(138, 197, 63, .14);
+    color: var(--leaf-lime-hi);
+    border: 1px solid rgba(138, 197, 63, .40);
+    box-shadow: 0 0 18px rgba(138, 197, 63, .12);
+  }
+  .ben-tag.compliance {
+    background: rgba(20, 157, 193, .12);
+    color: var(--teal-hi);
+    border: 1px solid rgba(20, 157, 193, .40);
+    box-shadow: 0 0 18px rgba(20, 157, 193, .12);
+  }
+  .ben-tag.future {
+    background: rgba(255, 217, 168, .08);
+    color: var(--warm-soft);
+    border: 1px solid rgba(255, 217, 168, .28);
+  }
+
+  /* footer block */
+  .info-foot { margin-top: 18px; }
+  .foot-msg {
+    font-size: 11px;
+    letter-spacing: 2.2px;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    line-height: 1.7;
+    margin: 0 0 14px;
+  }
+  .foot-msg strong { color: var(--leaf-lime); font-weight: 700; }
+  .foot-msg em { color: var(--teal-hi); font-style: normal; font-weight: 700; }
+
+  .footnote {
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+    font-style: italic;
+  }
+  .footnote sup { color: var(--leaf-lime); font-style: normal; margin-right: 2px; font-weight: 700; }
+
+  /* ============= Stage (right) — sunburst ============= */
+  .stage {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    min-width: 0; min-height: 0;
+  }
+  svg.burst {
+    width: 100%; height: 100%;
+    max-height: calc(100vh - 70px);   /* restored to previous wheel proportions */
+    display: block; overflow: visible;
+  }
+
+  @keyframes breathe {
+    0%, 100% { filter: drop-shadow(0 0 22px rgba(20,157,193,.18)); }
+    50%      { filter: drop-shadow(0 0 44px rgba(20,157,193,.34)); }
+  }
+  .breather { animation: breathe 5s ease-in-out infinite; }
+
+  @keyframes flarespin     { to { transform: rotate(360deg); } }
+  @keyframes flarespin-rev { to { transform: rotate(-360deg); } }
+  .flare-ring     { animation: flarespin     100s linear infinite; transform-origin: 0 0; }
+  .flare-ring-rev { animation: flarespin-rev 150s linear infinite; transform-origin: 0 0; }
+
+  @keyframes corepulse { 0%,100% { opacity: .85 } 50% { opacity: 1 } }
+  .core-glow { animation: corepulse 3.4s ease-in-out infinite; transform-origin: 0 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .breather, .flare-ring, .flare-ring-rev, .core-glow { animation: none; }
+  }
+
+  .spoke { cursor: pointer; }
+  .spoke-line {
+    stroke: url(#spokeGrad);
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: stroke-width .25s, opacity .25s, filter .25s;
+    opacity: .65;
+  }
+  .spoke-tip { fill: var(--teal-deep); transition: all .25s; }
+  .spoke-label {
+    fill: var(--ink-mute);
+    font-size: 14px;            /* bumped from 12 */
+    font-weight: 500;
+    letter-spacing: .35px;
+    transition: fill .25s, font-size .25s, font-weight .25s;
+    pointer-events: none; user-select: none;
+  }
+  .spoke-num {
+    fill: var(--leaf-lime);
+    font-size: 11px;            /* bumped from 9.5 */
+    font-weight: 700;
+    letter-spacing: 1px;
+    pointer-events: none; user-select: none;
+    transition: fill .25s;
+  }
+  .spoke-hit { fill: transparent; stroke: transparent; }
+
+  .spoke.hot .spoke-line {
+    stroke: url(#spokeHot);
+    stroke-width: 4.4;
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(138,197,63,.85))
+            drop-shadow(0 0 24px rgba(20,157,193,.55));
+  }
+  .spoke.hot .spoke-tip { fill: var(--leaf-lime-hi); filter: drop-shadow(0 0 12px var(--leaf-lime)); }
+  .spoke.hot .spoke-label { fill: var(--ink); font-size: 15.5px; font-weight: 700; }
+  .spoke.hot .spoke-num   { fill: var(--leaf-lime-hi); font-size: 12px; }
+
+  .stage.has-hot .spoke:not(.hot) .spoke-line  { opacity: .14; }
+  .stage.has-hot .spoke:not(.hot) .spoke-label { opacity: .35; }
+  .stage.has-hot .spoke:not(.hot) .spoke-num   { opacity: .32; }
+  .stage.has-hot .flare-line                   { opacity: .22; }
+
+  /* ============= Responsive (mobile/tablet) ============= */
+  @media (max-width: 980px) {
+    .slide {
+      grid-template-columns: 1fr;
+      padding: 90px 24px 28px;       /* room for top-right logo on narrow screens */
+      gap: 24px;
+    }
+    .stage { order: -1; min-height: 60vw; }
+    svg.burst { max-height: 70vh; }
+    .info-col { padding-left: 16px; }
+    .site-header { top: 20px; right: 24px; }
+    .site-header .logo { height: 44px; }
+  }
+
+  @media (max-width: 540px) {
+    .slide { padding: 80px 18px 24px; }
+    .title { letter-spacing: 1.5px; }
+    .tagline { font-size: 11px; letter-spacing: 2px; }
+    .spoke-label { font-size: 11px; }            /* mobile: bumped from 9.5 */
+    .spoke.hot .spoke-label { font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header" aria-label="Stratcon">
+    <a href="https://www.stratcon.ph" target="_blank" rel="noopener">
+      <img class="logo" alt="Stratcon — leaf and infinity, sustainability mark"
+           src="data:image/png;base64,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" />
+    </a>
+  </header>
+
+  <main class="slide">
+
+    <!-- LEFT: title + dynamic copy + footer -->
+    <section class="info-col" id="info">
+
+      <header>
+        <h1 class="title">
+          Smart Power <strong>Monitoring</strong>
+          <span class="title-aux">with <span class="smappee-mark">smappee</span></span>
+        </h1>
+        <p class="tagline">36 BENEFITS · ONE INVESTMENT · <em>COMPOUNDING PAYBACK</em></p>
+      </header>
+
+      <hr class="divider"/>
+
+      <div class="benefit-block">
+        <div class="idle-block" id="idle">
+          <h2 class="idle-headline">You can't pre-compute the ROI. <strong>You don't have to.</strong></h2>
+          <p class="idle-body">
+            Each benefit alone is hard to quantify in advance — but
+            <em class="lime">aggregated, the 36 benefits make payback inevitable</em>:
+            value from day&nbsp;1, ROI typically inside a year.
+          </p>
+          <p class="idle-body">
+            Smappee Infinity delivers granular, European-engineered smart power monitoring on open data layers.
+            <em class="teal">From BMS integration, to AI/ML outcomes, to prosumer WESM trading<sup>*</sup></em> — the same dataset feeds Dashboard, App, API, MQTT and Modbus simultaneously.
+          </p>
+        </div>
+
+        <div class="live-block" aria-live="polite">
+          <p class="ben-num"  id="benNum">BENEFIT 01 / 36</p>
+          <h2 class="ben-name" id="benName"></h2>
+          <p class="ben-desc"  id="benDesc"></p>
+          <span class="ben-tag" id="benTag" hidden></span>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <footer class="info-foot">
+        <p class="foot-msg">
+          Don't ask <strong>what's the ROI</strong> — ask <em>which of these 36 benefits would your operation NOT take.</em>
+        </p>
+        <p class="footnote">
+          <sup>*</sup>Prosumer trading and facility-level WESM-priced decisioning are not yet enabled by Philippine regulation, but the framework is moving in that direction.
+        </p>
+      </footer>
+    </section>
+
+    <!-- RIGHT: sunburst -->
+    <aside class="stage" id="stage">
+      <svg class="burst" viewBox="-460 -420 920 840" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-label="Interactive wheel of 36 smart-power-monitoring benefits">
+        <defs>
+          <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+            <stop offset="22%"  stop-color="#b8e07a" stop-opacity=".95"/>
+            <stop offset="55%"  stop-color="#149dc1" stop-opacity=".7"/>
+            <stop offset="100%" stop-color="#0a1f44" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="coreInner" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+            <stop offset="55%"  stop-color="#b8e07a" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#0b8543" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#149dc1" stop-opacity=".22"/>
+            <stop offset="50%"  stop-color="#1a3a72" stop-opacity=".07"/>
+            <stop offset="100%" stop-color="#000"     stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="spokeGrad" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#b8e07a" stop-opacity=".85"/>
+            <stop offset="40%"  stop-color="#149dc1" stop-opacity=".7"/>
+            <stop offset="100%" stop-color="#1a3a72" stop-opacity=".75"/>
+          </linearGradient>
+          <linearGradient id="spokeHot" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+            <stop offset="35%"  stop-color="#b8e07a" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#149dc1" stop-opacity="1"/>
+          </linearGradient>
+        </defs>
+
+        <circle cx="0" cy="0" r="380" fill="url(#haloGrad)"/>
+
+        <g class="flare-ring breather" id="flareRing"></g>
+        <g class="flare-ring-rev"      id="flareRingRev"></g>
+
+        <g id="spokes"></g>
+
+        <g class="core-glow">
+          <circle cx="0" cy="0" r="58" fill="url(#coreGrad)"/>
+          <circle cx="0" cy="0" r="32" fill="url(#coreInner)"/>
+          <circle cx="0" cy="0" r="14" fill="#ffffff"/>
+        </g>
+
+        <g pointer-events="none">
+          <circle cx="0" cy="0" r="46" fill="none" stroke="#8ac53f" stroke-opacity=".4" stroke-width=".7"/>
+          <path d="M -7 -19 L 5 -3 L -2 -1 L 7 19 L -5 3 L 2 1 Z"
+                fill="#0a1f44" stroke="#04101e" stroke-width=".5"/>
+        </g>
+      </svg>
+    </aside>
+  </main>
+
+<script>
+const benefits = [
+  { n: "Data Everywhere", nf: "Data Everywhere \u2014 Open Integration", d: "The same granular dataset streams to Dashboard, mobile App, REST API, MQTT and Modbus simultaneously \u2014 so wherever the operation evolves next (BMS, EMS, AI/ML), the data is ready in the format that project needs. With Modbus access guaranteed for the life of the unit, your roadmap is never held hostage by a vendor's licence model.", tg: null, tt: null },
+  { n: "Real-Time Visibility", nf: "Real-Time Circuit Visibility", d: "See exactly what every circuit consumes second-by-second, instead of waiting 30 days for a utility bill that already happened. Smappee delivers 1-second local refresh and 5-second cloud upload \u2014 granular enough to catch a single machine starting up.", tg: "Potential savings: 3\u201310%", tt: "savings" },
+  { n: "Phantom Loads", nf: "Phantom & Standby Load Hunting", d: "The cheapest kWh to save is the one that was never doing anything. Smappee's always-on baseload analytic isolates the 5\u201315% of consumption hiding in idle equipment, standby chargers and 'always-on' devices \u2014 circuit-by-circuit, so you know exactly which feeder to chase.", tg: "Potential savings: 2\u20138%", tt: "savings" },
+  { n: "Preventative Maintenance", nf: "Preventative Maintenance", d: "The cheapest outage is the one that never happens. Continuous current-signature and harmonic-spectrum capture (orders 1\u201319, sub-second) detects bearing wear, capacitor decay and insulation breakdown weeks before failure \u2014 turning maintenance from calendar-driven guesswork into condition-driven action, with a time-stamped record that closes warranty and post-mortem conversations cleanly.", tg: "Maintenance + outage avoidance: 8\u201315%", tt: "savings" },
+  { n: "Peak Demand Shaving", nf: "Peak Demand Shaving", d: "Cap the kW spikes that drive 30\u201370% of commercial bills, often by simply staggering startups and non-critical loads. Smappee's on-device automation in the Genius gateway acts in real time against a configured Grid Limit Current \u2014 and keeps acting even if the cloud goes offline.", tg: "Demand-charge savings: 5\u201320%", tt: "savings" },
+  { n: "Power Factor", nf: "Power Factor Correction", d: "Identify reactive-power penalties feeder-by-feeder and right-size capacitor banks instead of guessing at the main. kW, kVAR, kVA and PF are measured on every monitored circuit independently \u2014 so you find which loads are dragging the whole site down.", tg: "Bill savings: 2\u20138%", tt: "savings" },
+  { n: "Bill Validation", nf: "Independent Bill Validation", d: "An always-on second opinion on the utility's invoice \u2014 independently capturing kWh, kW, kVAR and PF at every point of supply. Billing errors are surprisingly common at scale; with continuous parallel measurement and years of detailed history retained, every line on the bill is reconcilable on demand.", tg: "Billing-error recovery: 1\u20133%", tt: "savings" },
+  { n: "Time-of-Use", nf: "Time-of-Use Optimisation", d: "Shift discretionary loads \u2014 EV charging, batch processes, HVAC pre-cool \u2014 into off-peak windows automatically. Per-circuit visibility lets you actually quantify the saving each rule delivers.", tg: "Energy-charge savings: 5\u201315%", tt: "savings" },
+  { n: "After-Hours Waste", nf: "After-Hours Energy Waste", d: "Discover lighting, HVAC, compressors and queueing equipment running through nights, weekends and holidays for nothing. Per-circuit profiles plus years of detailed history turn a one-off audit finding into an ongoing self-correcting loop.", tg: "Potential savings: 5\u201315%", tt: "savings" },
+  { n: "Tenant Sub-billing", nf: "Tenant Sub-billing", d: "Allocate energy costs accurately to tenants and lessees instead of square-footage estimates that always under-recover. With many channels per gateway, sub-metering every billable unit becomes routine \u2014 and the platform extends to water, gas and heat where pulse or Modbus sub-meters are wired in.", tg: "Cost recovery: 5\u201315% of building load", tt: "savings" },
+  { n: "Cost Centres", nf: "Internal Cost-Centre Allocation", d: "Identify which areas, departments, lines and functions are consuming what \u2014 for internal recharging, unit-cost analysis and management accounting. Energy ends up on the P&L next to the activity that caused it, not buried in 'utilities'.", tg: "Behavioural savings: 3\u20137%", tt: "savings" },
+  { n: "RA11285 Compliance", nf: "RA11285 Compliance (incl. ISO 50001)", d: "Meet the metering, baselining and continuous-improvement requirements of the Philippines Energy Efficiency and Conservation Act (RA11285). ISO 50001 is one of the international standards RA11285 references; the platform delivers the granular per-load consumption record both demand, ready to export.", tg: "Compliance requirement", tt: "compliance" },
+  { n: "ESG Reporting", nf: "ESG & Scope-2 Carbon Reporting", d: "Generate audit-ready Scope 2 emissions data for sustainability reports, customer RFPs and regulatory disclosures. Where pulse and Modbus sub-meters are added, the same platform extends to water, gas and heat \u2014 the whole utility footprint reporting through one engine.", tg: "Compliance & disclosure", tt: "compliance" },
+  { n: "Audit Cost Reduction", nf: "Audit Cost Reduction (RA11285 L1/L2)", d: "Pre-populate the data inputs that Level 1 and Level 2 RA11285 energy audits require, so each audit cycle costs a fraction of what it used to and finishes weeks faster. Insurance reviews and board reports run off the same dataset \u2014 compliance becomes a query, not a project.", tg: "Audit-cost reduction: 30\u201360%", tt: "savings" },
+  { n: "Power Quality", nf: "Power Quality Monitoring", d: "Catch harmonics, sags, swells and transients that silently destroy electronics, drives and sensitive process equipment. Smappee continuously measures THD plus individual harmonic orders 1\u201319 per phase, voltage min/max and frequency \u2014 PQ analyser, historian and alarm system in one platform.", tg: null, tt: null },
+  { n: "Equipment Lifespan", nf: "Equipment Lifespan +20\u201340%", d: "Cleaner power and early-fault detection extend motor, drive and transformer life by decades of cumulative operating hours. Continuous per-circuit data turns 'we think this asset is healthy' into a documented service curve \u2014 driving the next CapEx decision with hard evidence.", tg: "Asset-life extension: 20\u201340%", tt: "savings" },
+  { n: "Imbalance Detection", nf: "Voltage & Current Imbalances", d: "Voltage and current imbalances cause measurable, ongoing losses \u2014 a 2% voltage imbalance alone drives ~18% extra motor losses, and current imbalance flags upstream issues invisible at the main. Smappee captures L-L and L-N voltages plus per-phase currents on every monitored circuit, so each imbalance is identified at the feeder where it lives \u2014 making targeted rectification and rebalancing practical instead of guesswork.", tg: "Loss reduction: 2\u20138%", tt: "savings" },
+  { n: "Overload Prevention", nf: "Overload Prevention", d: "Spot panels and feeders running above 80% continuous limits before a breaker trip, melted lug or thermal incident occurs. Continuous per-circuit measurement against configurable thresholds turns reactive panel inspections into a real-time alarm.", tg: null, tt: null },
+  { n: "Right-Sizing", nf: "Equipment Right-Sizing", d: "Identify chronically oversized chillers, transformers and motors running at 30\u201340% load \u2014 the silent CapEx leak in most facilities. Continuous per-circuit load profiles reveal the real demand each asset is actually serving, so the next replacement is sized for reality, not nameplate.", tg: "Lifetime operating savings: 10\u201325%", tt: "savings" },
+  { n: "Continuous M&V", nf: "Continuous M&V \u2014 IPMVP-Aligned", d: "Continuous, granular performance monitoring delivers what every Investment Grade Audit was meant to deliver \u2014 and does so live and in perpetuity rather than once. Project M&V, retrofit verification, finance applications and the next round of investment decisions all start from real, time-stamped data. The honest question becomes: what value is an IGA still adding when continuous granular monitoring is already present?", tg: null, tt: null },
+  { n: "Capacity Planning", nf: "Capacity Planning & Service Sizing", d: "Know your true peaks before adding equipment, EV chargers or production lines \u2014 avoiding both nuisance trips and oversized service upgrades. Continuous capacity-peak data tells you whether the existing service can absorb the new load before you call the utility.", tg: "Avoided CapEx: 5\u201315%", tt: "savings" },
+  { n: "Production Efficiency", nf: "Production Efficiency (kWh per Unit)", d: "Track kWh per unit produced to spot machine drift, operator differences and process changes invisible in shift reports. Combined with continuous power-quality and reactive measurements, the platform exposes process-energy correlations production dashboards never see.", tg: "Process-energy savings: 3\u201310%", tt: "savings" },
+  { n: "Hidden Consumption", nf: "Unauthorised & Hidden Consumption", d: "Detect off-hours plug-ins, contractor draws, neighbour tap-ins and crypto mining you never sanctioned. Smappee's Non-Intrusive Load Monitoring disaggregates appliance signatures from a single CT clamp \u2014 finding draws nobody ever installed.", tg: "Recovery: 1\u20135%", tt: "savings" },
+  { n: "Faster Root Cause", nf: "Faster Root Cause", d: "Was it the utility, our gear, or the load? Cut Mean-Time-to-Resolution from days to minutes with time-stamped per-circuit waveform-grade data \u2014 every voltage event, breaker trip and process upset reconstructed inside the dashboard.", tg: null, tt: null },
+  { n: "Site Benchmarking", nf: "Multi-Site Benchmarking", d: "Compare facilities apples-to-apples on kWh per ft\u00b2, per unit produced or per occupant \u2014 and find which sites need attention. Dashboard and API expose every site uniformly, so a portfolio view costs no more engineering than a single-site view.", tg: "Portfolio savings: 3\u20138%", tt: "savings" },
+  { n: "RE Optimisation", nf: "RE Monitoring & Optimisation", d: "Aggregate renewable production across the entire facility while still tracking each system individually \u2014 and see live impact on power quality, import, export, self-consumption and self-sufficiency. Day-ahead forecasts let you plan loads, storage and grid interactions to maximise self-consumption rather than react to what nature delivers.", tg: "PV yield gain: 3\u20137%", tt: "savings" },
+  { n: "BESS Optimisation", nf: "BESS Optimisation", d: "Maximise battery payback by knowing precisely when to charge, discharge or hold based on real load shape, tariff structure and on-site solar. The same dataset that justifies the storage investment also operates it day-to-day \u2014 squeezing every cycle for arbitrage, peak shaving or backup duty.", tg: "BESS payback gain: 15\u201330%", tt: "savings" },
+  { n: "Microgrid Integration", nf: "Microgrid Integration", d: "Coordinate generation, storage, EVs and loads in real time \u2014 impossible without sub-second visibility into individual circuits. Smappee's open Modbus and MQTT layers let the microgrid controller talk to the same dataset as the energy team, the BMS and the SCADA.", tg: null, tt: null },
+  { n: "EV Charging", nf: "EV Charging Management", d: "Ensure 50+ kW chargers don't blow the building peak. Smappee's Cascade Overload Protection automatically sheds and re-balances charging power across multiple stations as total demand approaches the grid limit, while per-session and per-driver tracking ties charging cost back to the right tenant or department. As a vertically integrated solution \u2014 chargers, controllers and consumption monitoring on one platform \u2014 you skip the awkward integration layer between separate vendors.", tg: "Peak-demand avoidance: 10\u201325%", tt: "savings" },
+  { n: "HVAC Optimisation", nf: "HVAC Optimisation", d: "Match HVAC runtime, staging and setpoints to actual occupancy, ambient and per-circuit load conditions. Comprehensive smart power monitoring coupled with advanced occupancy and Indoor Air Quality (IAQ) sensors lets <a href=\"https://brightspace.ai\" target=\"_blank\" rel=\"noopener\" class=\"partner-link\">Brightspace</a> apply AI to adjust setpoints in real time and reduce outside-air intake \u2014 addressing the design and commissioning failures that controls upgrades alone cannot fix.", tg: "HVAC operations savings: up to 45%", tt: "savings" },
+  { n: "Lighting Audit", nf: "Lighting Controls Audit", d: "Verify that occupancy sensors, daylight harvesting and schedules actually deliver the savings the design originally promised \u2014 a check almost no facility runs after handover. Per-circuit profiles vs occupancy data make the gap obvious.", tg: "Lighting savings: 5\u201315%", tt: "savings" },
+  { n: "Real-Time Alerts", nf: "Real-Time Alerts & Anomaly Detection", d: "Be notified the moment a freezer door is left open, a chiller fails or demand approaches a costly threshold \u2014 before damage is done. The same granular signal driving the alerts is the input pipeline AI/ML anomaly detectors actually need; every prevented event protects revenue from the cascading losses an undetected fault would cause.", tg: "Revenue protection: 5\u201315%", tt: "savings" },
+  { n: "CapEx Justification", nf: "CapEx Justification", d: "Replace 'it feels old' with hard data on which transformers, motors and panels are actually due for replacement \u2014 and which aren't. Continuous, per-circuit data spanning years builds an asset-condition record that survives staff turnover and CFO changes.", tg: null, tt: null },
+  { n: "Demand Response", nf: "Demand Response Management", d: "Demand response is coming to the Philippines \u2014 moving toward formalisation as the grid modernises and WESM integration deepens. When it arrives, operations with continuous per-circuit visibility plus on-device load orchestration through their Genius gateway will be the ones earning from grid-balancing programs that pay for kW reductions on demand.", tg: "Future revenue opportunity*", tt: "future" },
+  { n: "Event Forensics", nf: "Electrical Event Forensics", d: "When equipment fails, the contractor blames the load, the utility blames the contractor, and the OEM blames the install \u2014 without data, you lose. Time-stamped, per-circuit voltage, current and power-quality waveforms turn warranty disputes, brownout-damage claims and forensic post-mortems into closed cases.", tg: null, tt: null },
+  { n: "Future-Proofing", nf: "Future-Proofing \u2014 Carbon Credits, WESM & Beyond", d: "Future-proofing the facility for what's coming, not just what's billed today. As the Philippines opens to carbon-credit monetisation, the prosumer / behind-the-meter trading model and live WESM spot-price decisioning, the prerequisite is the same: a granular, time-stamped, exportable dataset and an open data layer. Smappee's API and MQTT are already where future trading and credit-issuance tools will plug in.", tg: "Future option value*", tt: "future" }
+];
+
+const N        = benefits.length;
+const innerR   = 60;
+const outerR   = 220;
+const numR     = 234;
+const labelR   = 252;
+const flareInR = 68;
+
+const SVG_NS  = "http://www.w3.org/2000/svg";
+const spokesG = document.getElementById('spokes');
+const flareG  = document.getElementById('flareRing');
+const flareG2 = document.getElementById('flareRingRev');
+const stage   = document.getElementById('stage');
+const info    = document.getElementById('info');
+const benNum  = document.getElementById('benNum');
+const benName = document.getElementById('benName');
+const benDesc = document.getElementById('benDesc');
+const benTag  = document.getElementById('benTag');
+
+const polar = (r, deg) => { const a = deg * Math.PI / 180; return [Math.cos(a)*r, Math.sin(a)*r]; };
+
+function makeFlare(parent, count, lo, hi, color, opacity, width) {
+  for (let i = 0; i < count; i++) {
+    const a = (i / count) * 360;
+    const len = lo + Math.random() * (hi - lo);
+    const [x1, y1] = polar(flareInR, a);
+    const [x2, y2] = polar(len, a);
+    const ln = document.createElementNS(SVG_NS, "line");
+    ln.setAttribute("x1", x1); ln.setAttribute("y1", y1);
+    ln.setAttribute("x2", x2); ln.setAttribute("y2", y2);
+    ln.setAttribute("stroke", color);
+    ln.setAttribute("stroke-opacity", opacity);
+    ln.setAttribute("stroke-width", width);
+    ln.setAttribute("stroke-linecap", "round");
+    ln.setAttribute("class", "flare-line");
+    parent.appendChild(ln);
+  }
+}
+makeFlare(flareG,  72, 90,  170, "#149dc1", 0.18, 1);
+makeFlare(flareG,  18, 200, 310, "#8ac53f", 0.22, 1.4);
+makeFlare(flareG2, 36, 110, 200, "#0b8543", 0.10, 1);
+
+benefits.forEach((b, i) => {
+  const angle = i * (360 / N) - 90;
+  const [x1, y1] = polar(innerR, angle);
+  const [x2, y2] = polar(outerR, angle);
+  const [nx, ny] = polar(numR,   angle);
+  const [lx, ly] = polar(labelR, angle);
+
+  let rot = angle, anchor = "start";
+  if (angle > 90 || angle < -90) { rot = angle + 180; anchor = "end"; }
+
+  const g = document.createElementNS(SVG_NS, "g");
+  g.setAttribute("class", "spoke");
+  g.dataset.idx = i;
+  g.setAttribute("aria-label", b.nf);
+
+  // generous hit area
+  const [hx1, hy1] = polar(innerR - 4, angle);
+  const [hx2, hy2] = polar(labelR + 90, angle);
+  const hit = document.createElementNS(SVG_NS, "line");
+  hit.setAttribute("x1", hx1); hit.setAttribute("y1", hy1);
+  hit.setAttribute("x2", hx2); hit.setAttribute("y2", hy2);
+  hit.setAttribute("class", "spoke-hit");
+  hit.setAttribute("stroke", "transparent");
+  hit.setAttribute("stroke-width", "40");
+  g.appendChild(hit);
+
+  const line = document.createElementNS(SVG_NS, "line");
+  line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+  line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+  line.setAttribute("class", "spoke-line");
+  line.setAttribute("stroke", "url(#spokeGrad)");
+  g.appendChild(line);
+
+  const [tx, ty] = polar(outerR + 4, angle);
+  const tip = document.createElementNS(SVG_NS, "circle");
+  tip.setAttribute("cx", tx); tip.setAttribute("cy", ty);
+  tip.setAttribute("r", "2.6");
+  tip.setAttribute("class", "spoke-tip");
+  g.appendChild(tip);
+
+  const num = document.createElementNS(SVG_NS, "text");
+  num.setAttribute("x", nx); num.setAttribute("y", ny);
+  num.setAttribute("text-anchor", anchor);
+  num.setAttribute("dominant-baseline", "middle");
+  num.setAttribute("transform", `rotate(${rot} ${nx} ${ny})`);
+  num.setAttribute("class", "spoke-num");
+  num.textContent = String(i + 1).padStart(2, '0');
+  g.appendChild(num);
+
+  const text = document.createElementNS(SVG_NS, "text");
+  text.setAttribute("x", lx); text.setAttribute("y", ly);
+  text.setAttribute("text-anchor", anchor);
+  text.setAttribute("dominant-baseline", "middle");
+  text.setAttribute("transform", `rotate(${rot} ${lx} ${ly})`);
+  text.setAttribute("class", "spoke-label");
+  text.textContent = b.n;
+  g.appendChild(text);
+
+  g.addEventListener("mouseenter", () => activate(i, g));
+  g.addEventListener("mouseleave", () => deactivate(g));
+  g.addEventListener("focus",      () => activate(i, g));
+  g.addEventListener("blur",       () => deactivate(g));
+  g.addEventListener("click",      () => activate(i, g));    // tap-to-activate on touch
+  g.setAttribute("tabindex", "0");
+
+  spokesG.appendChild(g);
+});
+
+function activate(i, g) {
+  document.querySelectorAll('.spoke.hot').forEach(el => el.classList.remove('hot'));
+  g.classList.add('hot');
+  stage.classList.add('has-hot');
+  const b = benefits[i];
+  benNum.textContent  = `BENEFIT ${String(i+1).padStart(2,'0')} / ${N}`;
+  benName.textContent = b.nf;
+  benDesc.innerHTML  = b.d;   /* allow safe inline markup (links, emphasis) — content is author-controlled */
+  if (b.tg) {
+    benTag.textContent = b.tg;
+    benTag.className = 'ben-tag ' + (b.tt || '');
+    benTag.hidden = false;
+  } else {
+    benTag.hidden = true;
+  }
+  info.classList.add('active');
+}
+function deactivate(g) {
+  // delay so quick mouse-out / mouse-in transitions don't flicker
+  if (!document.querySelector('.spoke:hover, .spoke:focus')) {
+    g.classList.remove('hot');
+    if (!document.querySelector('.spoke.hot')) {
+      stage.classList.remove('has-hot');
+      info.classList.remove('active');
+    }
+  } else {
+    g.classList.remove('hot');
+  }
+}
+
+// keyboard nav
+let cursorIdx = -1;
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  cursorIdx = cursorIdx < 0 ? 0 : cursorIdx;
+  cursorIdx = (cursorIdx + (e.key === 'ArrowRight' ? 1 : -1) + N) % N;
+  document.querySelectorAll('.spoke.hot').forEach(el => el.classList.remove('hot'));
+  const target = spokesG.querySelectorAll('.spoke')[cursorIdx];
+  if (target) activate(cursorIdx, target);
+});
+</script>
+</body>
+</html>
